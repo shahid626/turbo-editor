@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Quotex Wick Tricks — Colour HTML Guide</title>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<style>
+  body { font-family: Arial, Helvetica, sans-serif; line-height:1.45; padding:20px; background:#f7f9fb; color:#111; }
+  h1 { color:#1b4f72; margin-bottom:6px; }
+  h2 { color:#0b5a2b; margin:6px 0; }
+  .card { background: white; border-radius:10px; padding:18px; margin:14px 0; box-shadow:0 6px 18px rgba(13,38,59,0.06); }
+  .svg-wrap { display:flex; gap:18px; align-items:center; margin-top:10px; flex-wrap:wrap; }
+  .caption { font-size:0.95rem; color:#333; margin-top:8px; max-width:980px; }
+  .small { font-size:0.9rem; color:#555; margin-bottom:6px; }
+  pre { background:#f1f5f9; padding:10px; border-radius:6px; overflow:auto; }
+  .note { background:#fffbe6; border-left:4px solid #ffd54a; padding:10px; border-radius:6px; margin-top:10px; }
+  svg { border-radius:4px; background:#fff; box-shadow:0 2px 8px rgba(0,0,0,0.04); }
+  .cheat { display:block; margin-top:12px; font-weight:600; color:#0b3b91; }
+  @media (max-width:700px) { .svg-wrap { flex-direction:column; } }
+</style>
+</head>
+<body>
+  <h1>Quotex Wick Tricks — Colour HTML Guide</h1>
+  <p class="small">Copy these patterns to your 1-minute chart. Combine with MA20 / support-resistance and RSI for higher accuracy.</p>
+
+  <div class="card">
+    <h2>1. Long Lower Wick → Next candle mostly <span style="color:#0b5a2b">GREEN</span></h2>
+    <div class="svg-wrap">
+      <!-- Lower wick green candle -->
+      <svg width="220" height="160" viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="220" height="160" fill="#ffffff"/>
+        <!-- upper wick (short) -->
+        <line x1="110" y1="20" x2="110" y2="65" stroke="#333" stroke-width="2"/>
+        <!-- body (green) -->
+        <rect x="95" y="65" width="30" height="40" rx="4" ry="4" fill="#16a34a"/>
+        <!-- bottom long wick -->
+        <line x1="110" y1="105" x2="110" y2="145" stroke="#333" stroke-width="2"/>
+      </svg>
+
+      <!-- Next candle green -->
+      <svg width="120" height="160" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="160" fill="#ffffff"/>
+        <line x1="60" y1="10" x2="60" y2="28" stroke="#333" stroke-width="2"/>
+        <rect x="50" y="28" width="20" height="80" rx="4" fill="#16a34a"/>
+        <line x1="60" y1="108" x2="60" y2="138" stroke="#333" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="caption">Explanation: Price hit a low, buyers pushed it up and candle closed much higher than the wick bottom. Expect a green follow-up candle most of the time.</div>
+  </div>
+
+  <div class="card">
+    <h2>2. Long Upper Wick → Next candle mostly <span style="color:#c53030">RED</span></h2>
+    <div class="svg-wrap">
+      <svg width="220" height="160" viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="220" height="160" fill="#ffffff"/>
+        <!-- upper long wick -->
+        <line x1="110" y1="10" x2="110" y2="60" stroke="#333" stroke-width="2"/>
+        <!-- body (red) -->
+        <rect x="95" y="60" width="30" height="40" rx="4" ry="4" fill="#dc2626"/>
+        <!-- bottom short wick -->
+        <line x1="110" y1="100" x2="110" y2="120" stroke="#333" stroke-width="2"/>
+      </svg>
+
+      <!-- Next candle red -->
+      <svg width="120" height="160" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="160" fill="#ffffff"/>
+        <line x1="60" y1="10" x2="60" y2="28" stroke="#333" stroke-width="2"/>
+        <rect x="50" y="28" width="20" height="80" rx="4" fill="#dc2626"/>
+        <line x1="60" y1="108" x2="60" y2="138" stroke="#333" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="caption">Explanation: Price moved up but sellers rejected the highs, closing lower — expect red continuation or reversal.]</div>
+  </div>
+
+  <div class="card">
+    <h2>3. Double Bottom Wick (Two touches at same low) → Strong <span style="color:#0b5a2b">GREEN</span></h2>
+    <div class="svg-wrap">
+      <!-- Candle 1 -->
+      <svg width="150" height="160" viewBox="0 0 150 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="150" height="160" fill="#ffffff"/>
+        <line x1="40" y1="10" x2="40" y2="60" stroke="#333" stroke-width="2"/>
+        <rect x="32" y="60" width="16" height="30" rx="3" fill="#16a34a"/>
+        <line x1="40" y1="90" x2="40" y2="130" stroke="#333" stroke-width="2"/>
+      </svg>
+      <!-- Candle 2 -->
+      <svg width="150" height="160" viewBox="0 0 150 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="150" height="160" fill="#ffffff"/>
+        <line x1="75" y1="10" x2="75" y2="60" stroke="#333" stroke-width="2"/>
+        <rect x="67" y="60" width="16" height="30" rx="3" fill="#16a34a"/>
+        <line x1="75" y1="90" x2="75" y2="130" stroke="#333" stroke-width="2"/>
+      </svg>
+      <!-- Next big green -->
+      <svg width="120" height="160" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="160" fill="#ffffff"/>
+        <rect x="50" y="20" width="20" height="100" rx="4" fill="#16a34a"/>
+      </svg>
+    </div>
+    <div class="caption">Two wicks hitting the same low create a demand/support zone — higher probability of a strong green candle next.</div>
+  </div>
+
+  <div class="card">
+    <h2>4. Double Top Wick (Two touches at same high) → Strong <span style="color:#c53030">RED</span></h2>
+    <div class="svg-wrap">
+      <!-- Candle 1 -->
+      <svg width="150" height="160" viewBox="0 0 150 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="150" height="160" fill="#ffffff"/>
+        <line x1="40" y1="10" x2="40" y2="55" stroke="#333" stroke-width="2"/>
+        <rect x="32" y="55" width="16" height="30" rx="3" fill="#dc2626"/>
+        <line x1="40" y1="85" x2="40" y2="92" stroke="#333" stroke-width="2"/>
+      </svg>
+      <!-- Candle 2 -->
+      <svg width="150" height="160" viewBox="0 0 150 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="150" height="160" fill="#ffffff"/>
+        <line x1="75" y1="10" x2="75" y2="55" stroke="#333" stroke-width="2"/>
+        <rect x="67" y="55" width="16" height="30" rx="3" fill="#dc2626"/>
+        <line x1="75" y1="85" x2="75" y2="92" stroke="#333" stroke-width="2"/>
+      </svg>
+      <!-- Next red -->
+      <svg width="120" height="160" viewBox="0 0 120 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="120" height="160" fill="#ffffff"/>
+        <rect x="50" y="20" width="20" height="100" rx="4" fill="#dc2626"/>
+      </svg>
+    </div>
+    <div class="caption">Two rejections at the same top create strong resistance — expect a significant red candle.</div>
+  </div>
+
+  <div class="card">
+    <h2>5. Wick Size Rule (2×, 3×, 4× body)</h2>
+    <div class="svg-wrap">
+      <svg width="220" height="160" viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="220" height="160" fill="#ffffff"/>
+        <!-- tiny body with very long lower wick -->
+        <line x1="40" y1="10" x2="40" y2="60" stroke="#333" stroke-width="2"/>
+        <rect x="34" y="60" width="12" height="8" rx="2" fill="#16a34a"/>
+        <line x1="40" y1="68" x2="40" y2="135" stroke="#333" stroke-width="2"/>
+        <text x="85" y="45" font-size="12" fill="#333">3× body → strong reversal</text>
+      </svg>
+    </div>
+    <div class="caption">If wick is ≥2× the body, treat it as a high-probability reversal. Larger the ratio, stronger the signal.</div>
+  </div>
+
+  <div class="card">
+    <h2>6. Small Body + Long Wick = Smart-money trap</h2>
+    <div class="svg-wrap">
+      <svg width="220" height="160" viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg">
+        <rect width="220" height="160" fill="#ffffff"/>
+        <line x1="110" y1="12" x2="110" y2="60" stroke="#333" stroke-width="2"/>
+        <rect x="100" y="60" width="20" height="8" rx="2" fill="#dc2626"/>
+        <line x1="110" y1="68" x2="110" y2="140" stroke="#333" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="caption">Often used to shake weak hands — the next candle typically moves opposite to the wick direction.</div>
+  </div>
+
+  <div class="card">
+    <h2>Cheat-sheet (Quick Rules)</h2>
+    <pre>
+• Long lower wick  → Next candle GREEN
+• Long upper wick  → Next candle RED
+• Double bottom     → Strong GREEN
+• Double top        → Strong RED
+• Wick ≥ 3× body    → Very high probability reversal
+• At support + wick → Higher confidence (confirm with MA20/RSI)
+    </pre>
+    <div class="note"><strong>Note:</strong> Combine with trend (MA20), support/resistance and RSI for best results. No method is 100%.</div>
+  </div>
+
+  <div style="margin-top:14px; font-size:0.95rem;">
+    <strong>How to use:</strong> Look for these wick patterns near support/resistance or trendlines. Confirm with MA20 (direction) and RSI (overbought/oversold) for higher accuracy.
+  </div>
+</body>
+</html>
