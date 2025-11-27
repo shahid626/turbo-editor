@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>5 Trading Tricks – MA, Wick, RSI, Breakout & Recovery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #0b1220, #020617);
+      color: #e5e7eb;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto 40px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #9ca3af;
+      margin-bottom: 25px;
+      font-size: 0.95rem;
+    }
+
+    .note {
+      border-radius: 12px;
+      border: 1px solid #4b5563;
+      padding: 12px 16px;
+      background: rgba(15, 23, 42, 0.85);
+      margin-bottom: 25px;
+      font-size: 0.9rem;
+    }
+
+    .note strong {
+      color: #22c55e;
+    }
+
+    .trick-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .trick-card-mini {
+      border-radius: 14px;
+      background: linear-gradient(135deg, #0f172a, #020617);
+      border: 1px solid #1f2937;
+      padding: 14px;
+      font-size: 0.9rem;
+    }
+
+    .trick-card-mini h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border: 1px solid #4b5563;
+      color: #9ca3af;
+      margin-bottom: 6px;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.3fr);
+      gap: 22px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 820px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      border-radius: 18px;
+      background: radial-gradient(circle at top left, #111827, #020617);
+      border: 1px solid #1f2937;
+      padding: 18px 18px 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      margin-bottom: 2px;
+    }
+
+    .card .label {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: #e5e7eb;
+      margin-bottom: 8px;
+    }
+
+    ul, ol {
+      padding-left: 18px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    .highlight {
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    .danger {
+      color: #f97316;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin: 10px 0 4px;
+      color: #cbd5f5;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.8rem;
+    }
+
+    .example-box {
+      border-radius: 12px;
+      border: 1px dashed #374151;
+      padding: 10px 12px;
+      font-size: 0.85rem;
+      background: rgba(15, 23, 42, 0.9);
+      margin-top: 6px;
+    }
+
+    .example-box strong {
+      color: #e5e7eb;
+    }
+
+    .key-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid #374151;
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      color: #d1d5db;
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+    }
+
+    .pill-dot.red {
+      background: #ef4444;
+    }
+
+    .pill-dot.yellow {
+      background: #eab308;
+    }
+
+    /* DIAGRAMS */
+
+    .diagram-card {
+      border-radius: 16px;
+      border: 1px solid #1f2937;
+      background: radial-gradient(circle at top, #020617, #020617);
+      padding: 12px 10px 16px;
+      margin-bottom: 10px;
+    }
+
+    .diagram-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #9ca3af;
+      margin-bottom: 4px;
+    }
+
+    .diagram-sub {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+
+    .chart-row {
+      position: relative;
+      border-radius: 10px;
+      background: #020617;
+      border: 1px solid #111827;
+      padding: 12px 10px 8px;
+      overflow: hidden;
+    }
+
+    .ma-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      opacity: 0.55;
+    }
+
+    .ma-fast {
+      top: 35%;
+      background: linear-gradient(90deg, #fbbf24, #fde68a);
+    }
+
+    .ma-slow {
+      top: 55%;
+      background: linear-gradient(90deg, #38bdf8, #a5f3fc);
+    }
+
+    .candles {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 6px;
+      height: 120px;
+    }
+
+    .candle {
+      position: relative;
+      width: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wick {
+      position: absolute;
+      width: 2px;
+      background: #9ca3af;
+      top: 6%;
+      bottom: 8%;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+    }
+
+    .body {
+      border-radius: 4px;
+      width: 100%;
+    }
+
+    .body.green {
+      background: linear-gradient(180deg, #22c55e, #16a34a);
+    }
+
+    .body.red {
+      background: linear-gradient(180deg, #ef4444, #b91c1c);
+    }
+
+    .body.small {
+      height: 26%;
+    }
+
+    .body.medium {
+      height: 45%;
+    }
+
+    .body.large {
+      height: 70%;
+    }
+
+    .wick-long-top .wick {
+      top: -16%;
+      bottom: 28%;
+    }
+
+    .wick-long-bottom .wick {
+      top: 24%;
+      bottom: -18%;
+    }
+
+    .wick-small .wick {
+      top: 20%;
+      bottom: 20%;
+    }
+
+    .range-box {
+      position: absolute;
+      left: 10%;
+      right: 10%;
+      top: 30%;
+      bottom: 40%;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      border-radius: 8px;
+    }
+
+    .range-label {
+      position: absolute;
+      right: 6px;
+      top: 4px;
+      font-size: 0.7rem;
+      color: #9ca3af;
+      background: rgba(15, 23, 42, 0.8);
+      padding: 1px 6px;
+      border-radius: 999px;
+    }
+
+    .up-arrow,
+    .down-arrow {
+      position: absolute;
+      font-size: 0.9rem;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid #374151;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .up-arrow {
+      bottom: 4px;
+      left: 10px;
+      color: #22c55e;
+    }
+
+    .down-arrow {
+      top: 6px;
+      left: 10px;
+      color: #ef4444;
+    }
+
+    .rsz-row {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .rsi-track {
+      position: relative;
+      border-radius: 999px;
+      background: #020617;
+      border: 1px solid #111827;
+      height: 38px;
+      overflow: hidden;
+      padding: 3px 6px;
+      font-size: 0.7rem;
+      color: #9ca3af;
+    }
+
+    .rsi-level {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: rgba(148, 163, 184, 0.6);
+    }
+
+    .rsi-70 {
+      top: 8px;
+    }
+
+    .rsi-30 {
+      bottom: 8px;
+    }
+
+    .rsi-bubble {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, #22c55e, #16a34a);
+      right: 22%;
+      bottom: 4px;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+    }
+
+    .rsi-bubble.red {
+      background: radial-gradient(circle at top, #fb7185, #b91c1c);
+      top: 4px;
+      bottom: auto;
+      box-shadow: 0 0 10px rgba(248, 113, 113, 0.6);
+    }
+
+    .rsi-label {
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.7rem;
+      padding: 1px 6px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid #374151;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      font-size: 0.85rem;
+    }
+
+    .table th,
+    .table td {
+      border: 1px solid #1f2937;
+      padding: 6px 8px;
+      text-align: left;
+    }
+
+    .table th {
+      background: rgba(15, 23, 42, 0.9);
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .table td {
+      background: rgba(15, 23, 42, 0.75);
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 24px;
+    }
+
+    a {
+      color: #38bdf8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>5 Trading Tricks – Visual Guide</h1>
+    <p class="subtitle">
+      MA Trend • Wick Rejection • RSI Entry • 3-Candle Breakout • Safe Recovery
+    </p>
+
+    <div class="note">
+      <strong>Important:</strong> This guide is for **practice and education only**.
+      Use on demo account first. Combine trend, RSI and candle patterns – never
+      trade only one signal.
+    </div>
+
+    <!-- QUICK OVERVIEW -->
+    <div class="trick-grid">
+      <div class="trick-card-mini">
+        <span class="tag">Trick 1</span>
+        <h3>MA Trend Direction Trick</h3>
+        <p>Use two moving averages to decide only BUY or only SELL side.</p>
+      </div>
+      <div class="trick-card-mini">
+        <span class="tag">Trick 2</span>
+        <h3>Big Wick Rejection Trick</h3>
+        <p>Long wick = powerful rejection → catch reversal candles.</p>
+      </div>
+      <div class="trick-card-mini">
+        <span class="tag">Trick 3</span>
+        <h3>RSI 90% Entry Trick</h3>
+        <p>RSI overbought/oversold + cross back + candle colour.</p>
+      </div>
+      <div class="trick-card-mini">
+        <span class="tag">Trick 4</span>
+        <h3>3-Candle Breakout Trick</h3>
+        <p>3 small candles inside a box → big breakout candle.</p>
+      </div>
+      <div class="trick-card-mini">
+        <span class="tag">Trick 5</span>
+        <h3>Safe Loss Recovery System</h3>
+        <p>Controlled amount increase, max 3 steps, with hard stop rules.</p>
+      </div>
+    </div>
+
+    <!-- TRICK 1 -->
+    <div class="card" id="trick1">
+      <h2>Trick 1 – MA Trend Direction Trick</h2>
+      <p class="label">Use Moving Averages to choose direction only: BUY or SELL.</p>
+
+      <div class="layout">
+        <div>
+          <div class="section-title">Settings</div>
+          <ul>
+            <li><span class="highlight">Fast MA (Yellow)</span>: e.g. 9 or 10 period.</li>
+            <li><span class="highlight">Slow MA (Blue)</span>: e.g. 21 or 25 period.</li>
+            <li>Use on 1-min or 5-min chart with same logic.</li>
+          </ul>
+
+          <div class="section-title">Rules</div>
+          <ul>
+            <li><strong>BUY ONLY</strong> if price is above both MAs and fast MA is above slow MA.</li>
+            <li><strong>SELL ONLY</strong> if price is below both MAs and fast MA is below slow MA.</li>
+            <li><strong>NO TRADE</strong> if price is stuck between the two MAs.</li>
+          </ul>
+
+          <div class="section-title">Example</div>
+          <div class="example-box">
+            <strong>Example – Buy Trend:</strong><br />
+            Price is clearly above both yellow and blue MAs. Yellow MA is sloping up
+            and above blue. You see a new green candle bouncing from yellow MA.<br />
+            ➜ You look only for <span class="highlight">BUY setups</span> (use other tricks for entry).
+          </div>
+
+          <div class="key-points">
+            <div class="pill">
+              <span class="pill-dot"></span> Above both MAs → BUY zone
+            </div>
+            <div class="pill">
+              <span class="pill-dot red"></span> Below both MAs → SELL zone
+            </div>
+            <div class="pill">
+              <span class="pill-dot yellow"></span> Between MAs → No trade
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="diagram-card">
+            <div class="diagram-title">Trend Diagram</div>
+            <div class="diagram-sub">Left: Uptrend (Buy Only) • Right: Downtrend (Sell Only)</div>
+            <div class="chart-row">
+              <div class="ma-line ma-fast"></div>
+              <div class="ma-line ma-slow"></div>
+
+              <div class="candles">
+                <!-- Uptrend candles -->
+                <div class="candle">
+                  <div class="wick"></div>
+                  <div class="body green medium"></div>
+                </div>
+                <div class="candle">
+                  <div class="wick"></div>
+                  <div class="body green large"></div>
+                </div>
+                <div class="candle">
+                  <div class="wick"></div>
+                  <div class="body green medium"></div>
+                </div>
+                <div class="candle">
+                  <div class="wick"></div>
+                  <div class="body green large"></div>
+                </div>
+                <!-- Gap -->
+                <div class="candle">
+                  <div class="wick"></div>
+                  <div class="body small"></div>
+                </div>
+                <!-- Downtrend candles -->
+                <div class="candle">
+                  <div class="wick"></div>
+                  <div class="body red large"></div>
+                </div>
+                <div class="candle">
+                  <div class="wick"></div>
+                  <div class="body red medium"></div>
+                </div>
+                <div class="candle">
+                  <div class="wick"></div>
+                  <div class="body red large"></div>
+                </div>
+              </div>
+
+              <div class="up-arrow">
+                ↑ BUY Only
+              </div>
+              <div class="down-arrow">
+                ↓ SELL Only
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRICK 2 -->
+    <div class="card" id="trick2">
+      <h2>Trick 2 – Big Wick Rejection Trick</h2>
+      <p class="label">Find long wicks at top or bottom to catch reversals.</p>
+
+      <div class="layout">
+        <div>
+          <div class="section-title">What to Look For</div>
+          <ul>
+            <li>
+              <span class="highlight">SELL Setup:</span> Candle with a very long
+              <strong>top wick</strong> and small body near resistance.
+            </li>
+            <li>
+              <span class="highlight">BUY Setup:</span> Candle with a very long
+              <strong>bottom wick</strong> and small body near support.
+            </li>
+          </ul>
+
+          <div class="section-title">Entry Rules</div>
+          <ol>
+            <li>Wait for the long wick candle to form at key level.</li>
+            <li>Next candle must show direction:
+              <ul>
+                <li>After long top wick → next candle red → <strong>SELL</strong>.</li>
+                <li>After long bottom wick → next candle green → <strong>BUY</strong>.</li>
+              </ul>
+            </li>
+          </ol>
+
+          <div class="section-title">Extra Confirmation</div>
+          <ul>
+            <li>RSI above 70 → prefer SELL on long top wick.</li>
+            <li>RSI below 30 → prefer BUY on long bottom wick.</li>
+            <li>Always check MA: trade with overall trend when possible.</li>
+          </ul>
+
+          <div class="example-box">
+            <strong>Example – Sell Wick:</strong><br />
+            Market is in uptrend, price hits resistance, you see a green candle with a huge
+            top wick and small body. Next candle opens and turns red.<br />
+            ➜ Enter <span class="danger">SELL</span> on the red candle – stop above the wick.
+          </div>
+        </div>
+
+        <div>
+          <div class="diagram-card">
+            <div class="diagram-title">Rejection Images</div>
+            <div class="diagram-sub">Left: Long Top Wick (Sell) • Right: Long Bottom Wick (Buy)</div>
+            <div class="chart-row">
+              <div class="candles">
+                <!-- Long top wick rejection -->
+                <div class="candle wick-long-top">
+                  <div class="wick"></div>
+                  <div class="body green small"></div>
+                </div>
+                <div class="candle">
+                  <div class="wick"></div>
+                  <div class="body red medium"></div>
+                </div>
+
+                <!-- Spacer -->
+                <div class="candle">
+                  <div class="wick"></div>
+                  <div class="body small"></div>
+                </div>
+
+                <!-- Long bottom wick rejection -->
+                <div class="candle wick-long-bottom">
+                  <div class="wick"></div>
+                  <div class="body red small"></div>
+                </div>
+                <div class="candle">
+                  <div class="wick"></div>
+                  <div class="body green medium"></div>
+                </div>
+              </div>
+              <div class="up-arrow">
+                BUY after long bottom wick
+              </div>
+              <div class="down-arrow">
+                SELL after long top wick
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRICK 3 -->
+    <div class="card" id="trick3">
+      <h2>Trick 3 – RSI 90% Entry Trick</h2>
+      <p class="label">RSI cross back from overbought/oversold + candle colour.</p>
+
+      <div class="layout">
+        <div>
+          <div class="section-title">Settings</div>
+          <ul>
+            <li><strong>RSI Period:</strong> 14</li>
+            <li><strong>Upper Level:</strong> 70</li>
+            <li><strong>Lower Level:</strong> 30</li>
+          </ul>
+
+          <div class="section-title">BUY Rules</div>
+          <ol>
+            <li>RSI moves <strong>below 30</strong> (oversold).</li>
+            <li>Then RSI comes back <strong>above 30</strong>.</li>
+            <li>The candle on chart is green → <span class="highlight">BUY</span>.</li>
+          </ol>
+
+          <div class="section-title">SELL Rules</div>
+          <ol>
+            <li>RSI moves <strong>above 70</strong> (overbought).</li>
+            <li>Then RSI comes back <strong>below 70</strong>.</li>
+            <li>The candle on chart is red → <span class="danger">SELL</span>.</li>
+          </ol>
+
+          <div class="section-title">Extra Safety</div>
+          <ul>
+            <li>Prefer BUY when price is near support or above slow MA.</li>
+            <li>Prefer SELL when price is near resistance or below slow MA.</li>
+            <li>Avoid trades when RSI is between 40–60 (sideways zone).</li>
+          </ul>
+
+          <div class="example-box">
+            <strong>Example – RSI Buy:</strong><br />
+            RSI drops to 25, then climbs back to 32. At that moment, you see a strong
+            green candle at support.<br />
+            ➜ Enter <span class="highlight">BUY</span>. Stop below recent low.
+          </div>
+        </div>
+
+        <div>
+          <div class="diagram-card">
+            <div class="diagram-title">RSI Diagram</div>
+            <div class="diagram-sub">Top: Overbought Sell • Bottom: Oversold Buy</div>
+            <div class="rsz-row">
+              <div class="rsi-track">
+                <div class="rsi-level rsi-70"></div>
+                <div class="rsi-bubble red"></div>
+                <div class="rsi-label">RSI
